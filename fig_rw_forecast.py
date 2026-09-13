@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 px = yf.Ticker("AAPL").history(start="2015-01-01", end="2024-12-31",
                                auto_adjust=True)["Close"]
 px.to_csv("aapl.csv")          # keep the file so results stay reproducible
+py = yf.Ticker("^GSPC").history(start="2015-01-01", end="2024-12-31",
+                               auto_adjust=True)["Close"]
+py.to_csv("sp500.csv")  # keep the file so results stay reproducible
+
 
 r = np.log(px).diff().dropna()
 mu, sd = r.mean(), r.std()
